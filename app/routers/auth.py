@@ -1,25 +1,32 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from datetime import timedelta
-from app.auth import create_access_token, verify_password
-from app.models import User
-from app.auth import ACCESS_TOKEN_EXPIRE_MINUTES
+from fastapi import APIRouter, HTTPException
+from app.models import User, UserInDB
+from app.auth import get_password_hash
 
 router = APIRouter()
 
+# Base de datos simulada
 users_db = {
     "john": {
         "username": "john",
         "hashed_password": "$2b$12$somethinghashed"
     }
 }
-#$2a$12$CLd3l4IanPAu0oLbGNHGteoVi1hF6DzJs/mUISTQbPyCv.IwIc0t2
-@router.post("/login")
-def login(user: User):
-    db_user = users_db.get(user.username)
-    if not db_user or not verify_password(user.password, db_user["hashed_password"]):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+
+# Ruta para crear un nuevo usuario
+@router.post("/signup")
+def create_user(user: User):
+    if user.username in users_db:
+        raise HTTPException(status_code=400, detail="Username already registered")
     
-    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
-    
-    return {"access_token": access_token, "token_type": "bearer"}
+    hashed_password = get_password_hash(user.password)
+    user_in_db = UserInDB(**user.model_dump(), hashed_password=hashed_password)
+    users_db[user.username] = user_in_db
+    return {"username": user.username}
+
+# Ruta para obtener información de un usuario
+@router.get("/{username}")
+def get_user(username: str):
+    user = users_db.get(username)
+    if user:
+        return user
+    raise HTTPException(status_code=404, detail="User not found")
