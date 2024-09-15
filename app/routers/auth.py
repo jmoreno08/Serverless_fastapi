@@ -12,7 +12,7 @@ users_db = {
         "hashed_password": "$2b$12$somethinghashed"
     }
 }
-
+#$2a$12$CLd3l4IanPAu0oLbGNHGteoVi1hF6DzJs/mUISTQbPyCv.IwIc0t2
 @router.post("/login")
 def login(user: User):
     db_user = users_db.get(user.username)
