@@ -1,15 +1,14 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from mangum import Mangum
-from app.routers import items
-from app.auth import get_current_user
+from app.routers import users
 
 app = FastAPI()
 
 app.include_router(
-    items.router,
-    prefix="/items",
-    tags=["items"],
-    dependencies=[Depends(get_current_user)]
+    users.router,
+    prefix="/user",
+    tags=["user"]
 )
 
 handler = Mangum(app)
+

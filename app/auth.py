@@ -1,4 +1,4 @@
-import jwt  # PyJWT
+from jose import JWTError, jwt
 from datetime import datetime, timedelta, timezone
 from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
