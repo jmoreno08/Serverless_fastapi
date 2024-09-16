@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from datetime import timedelta
-from app.auth import create_access_token, verify_password
-from app.models import LoginRequest
-from app.auth import ACCESS_TOKEN_EXPIRE_MINUTES
+from app.utils.auth import create_access_token, verify_password
+from app.models.models import LoginRequest
+from app.utils.auth import ACCESS_TOKEN_EXPIRE_MINUTES
 
 router = APIRouter()
 

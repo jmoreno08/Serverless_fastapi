@@ -6,8 +6,8 @@ app = FastAPI()
 
 app.include_router(
     users.router,
-    prefix="/user",
-    tags=["user"]
+    prefix="/users",
+    tags=["users"]
 )
 
 handler = Mangum(app)
