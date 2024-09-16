@@ -12,7 +12,7 @@ _agrega aca descripcion del proyecto_
 
 ### 1.3. Tecnologías Utilizadas 🚀
 
-_**Python 3.10.10**_
+_**Python 3.10**_
 
 ## 2. Requisitos 📋
 
