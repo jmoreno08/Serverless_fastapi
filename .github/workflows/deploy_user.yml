@@ -66,4 +66,4 @@ jobs:
 
       - name: Deploy Lambda to AWS
         run: |
-          aws lambda update-function-code --function-name my-users-lambda --zip-file fileb://lambda_users_package.zip
+          aws lambda update-function-code --function-name users-lambda --zip-file fileb://lambda_users_package.zip

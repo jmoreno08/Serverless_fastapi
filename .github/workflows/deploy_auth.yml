@@ -66,4 +66,4 @@ jobs:
 
       - name: Deploy Lambda to AWS
         run: |
-          aws lambda update-function-code --function-name my-auth-lambda --zip-file fileb://lambda_auth_package.zip
+          aws lambda update-function-code --function-name auth-lambda --zip-file fileb://lambda_auth_package.zip
