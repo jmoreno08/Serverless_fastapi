@@ -7,7 +7,7 @@ on:
     paths:
       - 'lambda_functions/lambda_users/**'
       - 'app/**'
-      - 'tests/**'
+      - 'app/tests/**'
 
 jobs:
   CI:
