@@ -36,6 +36,7 @@ jobs:
   cd:
     name: CD - Deploy Users Lambda
     needs: ci  # Este job solo se ejecuta si el job 'ci' pasa
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
