@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest tests/ --maxfail=5 --disable-warnings
+          pytest app/tests/ --maxfail=5 --disable-warnings
 
   CD:
     name: CD - Deploy Users Lambda
