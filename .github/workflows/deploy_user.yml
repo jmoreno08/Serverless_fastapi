@@ -53,9 +53,19 @@ jobs:
           pip install -r requirements.txt
           pip install mangum
 
+      - name: Create virtual environment in lambda directory
+        run: |
+          python -m venv lambda_functions/lambda_users/venv
+          source lambda_functions/lambda_users/venv/bin/activate
+          pip install -r requirements.txt
+          pip install mangum
+
       - name: Zip Lambda function
         run: |
-          zip -r lambda_users_package.zip lambda_functions/lambda_users/ app/ -x "*.pyc" "__pycache__/*"
+          cd lambda_functions/lambda_users
+          zip -r ../../lambda_users_package.zip . -x "*.pyc" "__pycache__/*"
+          cd ../../
+          zip -r lambda_users_package.zip app/ -x "*.pyc" "__pycache__/*"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
