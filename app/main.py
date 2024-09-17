@@ -9,7 +9,7 @@ app.include_router(users.router, prefix="/users", tags=["users"])
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 
 @app.get("/")
-def read_root():
+async def read_root():
     return {"message": "Welcome to the API"}
 
 # Mangum permite que FastAPI funcione con AWS Lambda
