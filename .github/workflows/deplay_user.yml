@@ -10,7 +10,7 @@ on:
       - 'tests/**'
 
 jobs:
-  ci:
+  CI:
     name: CI - Run Tests for Users Lambda
     runs-on: ubuntu-latest
     steps:
@@ -33,9 +33,9 @@ jobs:
         run: |
           pytest tests/ --maxfail=5 --disable-warnings
 
-  cd:
+  CD:
     name: CD - Deploy Users Lambda
-    needs: ci  # Este job solo se ejecuta si el job 'ci' pasa
+    needs: CI  # Este job solo se ejecuta si el job 'ci' pasa
     environment: production
     runs-on: ubuntu-latest
     steps:
