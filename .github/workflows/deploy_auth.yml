@@ -50,6 +50,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv lambda_functions/lambda_auth/venv
+          ls
           source lambda_functions/lambda_auth/venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
