@@ -9,8 +9,8 @@ class User(BaseModel):
     userid: UUID | None = None
     username: str
     password: str
-    created_at : Optional[datetime.datetime] | None = None# 2032-04-23T10:20:30.400+02:30
-    updated_at : Optional[datetime.datetime] | None = None# 2032-04-23T10:20:30.400+02:30
+    created_at : Optional[datetime.datetime] | None = None
+    updated_at : Optional[datetime.datetime] | None = None
     
 
 

@@ -50,7 +50,6 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv lambda_functions/lambda_auth/venv
-          ls
           source lambda_functions/lambda_auth/venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
@@ -60,8 +59,7 @@ jobs:
         run: |
           cd lambda_functions/lambda_auth
           zip -r ../../lambda_auth_package.zip . -x "*.pyc" "__pycache__/*"
-          cd ../..
-
+          cd ../.. 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
